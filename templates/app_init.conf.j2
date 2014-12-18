@@ -1,0 +1,25 @@
+#!upstart
+description "Upstart Script for a Node.js forever process"
+
+start on startup
+stop on shutdown
+
+expect fork
+
+env USER="deploy"
+env APP_DIR="{{ app_path }}/current"
+env APP_START="./bin/{{ main_forever_file }}.js"
+env LOG="{{ app_path }}/shared/log/{{ app_name }}.log"
+env PID="/home/deploy/.forever/pids/{{ app_name }}.pid"
+env FOREVER_BIN="/usr/local/bin/forever"
+env NODE_ENV={{ server_env }}
+
+export NODE_ENV
+
+script
+    exec start-stop-daemon --start --chuid $USER --group $USER --chdir $APP_DIR --quiet --exec $FOREVER_BIN start -- -l $LOG -a --sourceDir $APP_DIR --minUptime 5000 --spinSleepTime 2000 $APP_START
+end script
+
+pre-stop script
+    exec forever stop $APP_START >> $LOG
+end script

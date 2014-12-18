@@ -1,0 +1,8 @@
+---
+- name: Install Forever
+  npm: name=forever global=yes state=present
+  sudo: yes
+
+- name: Copy init script
+  template: src=app_init.conf.j2 dest=/etc/init/{{ app_process_name }}.conf owner=root group=root
+  sudo: yes
