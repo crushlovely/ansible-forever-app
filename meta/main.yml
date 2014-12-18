@@ -2,7 +2,7 @@
 galaxy_info:
   author: Pablo Castillo
   company: Crush & Lovely
-  description: Configures loggly for an application
+  description: Installs Forever and Copies an Upstart Script to Start an Application
   license: MIT
   min_ansible_version: 1.6
   platforms:
