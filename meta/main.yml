@@ -9,7 +9,9 @@ galaxy_info:
     - name: Ubuntu
       versions:
         - precise
+        - Trusty
   categories:
     - system
     - cloud
 dependencies: []
+version: 1.0.0

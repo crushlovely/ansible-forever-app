@@ -1,0 +1,8 @@
+---
+app_name: test
+app_path: /home/ubuntu/test
+server_env: qa
+app:
+  user: ubuntu
+  process_name: test
+  forever_file: test

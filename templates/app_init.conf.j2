@@ -6,9 +6,9 @@ stop on shutdown
 
 expect fork
 
-env USER="deploy"
+env USER="{{ app.user }}"
 env APP_DIR="{{ app_path }}/current"
-env APP_START="./bin/{{ main_forever_file }}.js"
+env APP_START="./bin/{{ app.forever_file }}.js"
 env LOG="{{ app_path }}/shared/log/{{ app_name }}.log"
 env PID="/home/deploy/.forever/pids/{{ app_name }}.pid"
 env FOREVER_BIN="/usr/local/bin/forever"
